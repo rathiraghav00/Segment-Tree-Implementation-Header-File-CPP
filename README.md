@@ -1,23 +1,11 @@
-# segTree
-General purpose segment tree library.
+# Segment Tree
 
-1. include SegmentTree.h
-2. to construct a segment tree you need to specify the following:<br>
-   a. The datatype of array for which the tree is being constructed.<br>
-   b. an array or vector for which the tree is to be constructed.<br>
-   c. a value that can be used to fill the extra nodes of the tree.<br>
-   d. a function combine that specifies how the result of left and right child of a node<br> 
-        should be used to generate the value of current node.
-3. Example usage:      
-   int small(int x,int y){return min(x,y);}<br>
-   SegmentTree < int > rangeMinQueries(dataVector,INT_MAX,small);<br>
-   
-   int sum(int x,int y){return x+y;}<br>
-   SegmentTree < int > rangeSumQueries(dataVector,0,sum);<br>
-   
-   long long product(long long x,long long y){return x*y;}<br>
-   SegmentTree < long long > rangeProductQueries(dataVector,1,product);<br>
-   
-solution to SPOJ GSS1 using segTree library : https://ideone.com/EFxf6O<br>
-solution to SPOJ KGSS using segTree library : https://ideone.com/fUK5Jz<br>
+Segment Tree is a basically a binary tree used for storing the intervals or segments. Each node in the Segment Tree represents an interval. 
+
+A Segment Tree is a data structure that allows answering range queries over an array effectively, while still being flexible enough to allow modifying the array. This includes finding the sum of consecutive array elements arr[l...r] in O(log N) time. Between answering such queries the Segment Tree allows modifying the array by replacing one element, or even change the elements of a whole subsegment (e.g. assigning all elements arr[l..r] to any value, or adding a value to all element in the subsegment) in logarithmic time complexity
+
+To read more about segment tree : <br />
+https://cp-algorithms.com/data_structures/segment_tree.html <br />
+https://www.hackerearth.com/practice/data-structures/advanced-data-structures/segment-trees/tutorial/
+
 
