@@ -6,6 +6,7 @@
 #define right(i) (2 * i + 2)
 #define parent(i) ((i - 1) / 2)
 
+// Vector STL
 #include <vector>
 
 template <class T>
@@ -113,7 +114,6 @@ void SegmentTree<T>::buildTree(std::vector<T> data)
 
     tree = new T[segTreeSize];
 
-    // ??? why this value
     int extraNodes = (segTreeSize / 2 + 1) - n;
 
     for (int i = segTreeSize - 1; i >= 0; i--)
