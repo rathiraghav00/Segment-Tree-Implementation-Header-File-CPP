@@ -1,5 +1,5 @@
-#ifndef SEGMENTTREE_H
-#define SEGMENTTREE_H
+#ifndef SEGTREE_H
+#define SEGTREE_H
 
 // 0 based indexing
 #define left(i) (2 * i + 1)
@@ -10,13 +10,13 @@
 #include <vector>
 
 template <class T>
-class SegmentTree
+class SegTree
 {
 
 public:
     // Constructor of Segment Tree
-    SegmentTree(std::vector<T> data, T value, T (*combine)(T obj1, T obj2));
-    SegmentTree(T ar[], int n, T value, T (*combine)(T obj1, T obj2));
+    SegTree(std::vector<T> data, T value, T (*combine)(T obj1, T obj2));
+    SegTree(T ar[], int n, T value, T (*combine)(T obj1, T obj2));
 
     // Query in range [l, r]
     T query(int l, int r);
@@ -52,7 +52,7 @@ private:
 };
 
 template <class T>
-SegmentTree<T>::SegmentTree(std::vector<T> data,
+SegTree<T>::SegTree(std::vector<T> data,
                             T value, T (*combine)(T obj1, T obj2))
 {
     this->combine = combine;
@@ -62,7 +62,7 @@ SegmentTree<T>::SegmentTree(std::vector<T> data,
 }
 
 template <class T>
-SegmentTree<T>::SegmentTree(T ar[], int n,
+SegTree<T>::SegTree(T ar[], int n,
                             T value, T (*combine)(T obj1, T obj2))
 {
     this->combine = combine;
@@ -77,7 +77,7 @@ SegmentTree<T>::SegmentTree(T ar[], int n,
 }
 
 template <class T>
-int SegmentTree<T>::calculateSize(int n)
+int SegTree<T>::calculateSize(int n)
 {
     int pw2 = 1;
     while (pw2 < n)
@@ -88,14 +88,14 @@ int SegmentTree<T>::calculateSize(int n)
 }
 
 template <class T>
-T SegmentTree<T>::query(int l, int r)
+T SegTree<T>::query(int l, int r)
 {
     int st = 0, ed = segTreeSize / 2;
     return queryHelper(l, r, st, ed, 0);
 }
 
 template <class T>
-T SegmentTree<T>::queryHelper(int l, int r, int st, int ed, int node)
+T SegTree<T>::queryHelper(int l, int r, int st, int ed, int node)
 {
     // Invalid range
     if ((r < st) || (l > ed) || (l > r))
@@ -108,7 +108,7 @@ T SegmentTree<T>::queryHelper(int l, int r, int st, int ed, int node)
 }
 
 template <class T>
-void SegmentTree<T>::buildTree(std::vector<T> data)
+void SegTree<T>::buildTree(std::vector<T> data)
 {
     int n = data.size();
 
@@ -136,7 +136,7 @@ void SegmentTree<T>::buildTree(std::vector<T> data)
 }
 
 template <class T>
-void SegmentTree<T>::update(int idx, T val)
+void SegTree<T>::update(int idx, T val)
 {
     // Index of segTree
     int segTreeIdx = (segTreeSize / 2) + idx;
@@ -158,5 +158,5 @@ void SegmentTree<T>::update(int idx, T val)
     }
 }
 
-// SEGMENTTREE_H
+// SEGTREE_H
 #endif
